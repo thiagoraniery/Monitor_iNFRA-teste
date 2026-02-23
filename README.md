@@ -2,9 +2,9 @@
 
 > Pipeline automatizado para monitoramento e análise de dados dos setores de Infraestrutura.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge.svg)](https://monitor-infra-thiago.streamlit.app)
-![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)
-![Status](https://img.shields.io/badge/Status-Em%20Produ%C3%A7%C3%A3o-green.svg)
+[![Streamlit App](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=flat-square&logo=streamlit)](https://monitor-infra-thiago.streamlit.app)
+![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Em%20Produ%C3%A7%C3%A3o-green.svg?style=flat-square)
 
 ## Sobre o Projeto
 
