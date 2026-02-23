@@ -1,8 +1,10 @@
 pandas
-streamlit
+streamlit>=1.31.0
 plotly
 openpyxl
 selenium
 webdriver-manager
 supabase
-tqdm 
+tqdm
+numpy
+altair<5
