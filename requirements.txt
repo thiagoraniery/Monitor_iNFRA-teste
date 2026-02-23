@@ -8,3 +8,5 @@ supabase
 tqdm
 numpy
 altair<5
+wordcloud
+matplotlib
