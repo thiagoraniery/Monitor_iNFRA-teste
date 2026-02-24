@@ -1,0 +1,44 @@
+name: Monitor iNFRA - Auto Update
+
+on:
+  schedule:
+    - cron: '0 12,17 * * *' # 09:00 e 14:00 Brasília (UTC-3)
+  workflow_dispatch: 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar Codigo
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Instalar Dependencias
+        run: |
+          pip install -r requirements.txt
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      - name: Executar Robo Completo
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: python infra_auto_completo.py
+
+      - name: Sincronizar Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: python upload_supabase.py
+
+      - name: Commit do Excel Atualizado
+        run: |
+          git config --global user.name 'Thiago Auto'
+          git config --global user.email 'thiago@monitor.com'
+          git add AgenciaInfra_Historico.xlsx
+          git commit -m "Auto-Update: $(date +'%d/%m/%Y %H:%M')" || echo "Sem alteracoes"
+          git push 
